@@ -35,12 +35,15 @@
                 <td th:text="${alumno.totalAsignaturas}"></td>
                 <td>
 
-                     <!-- <a th:href="@{/detalles/} + ${empleado.id}"  target="_blank">Detalles</a> -->
-
+                    <!-- <a th:href="@{/actualizar/} + ${alumno.id}" target="_blank">Actualizar</a> -->
 
                 </td>
             </tr>
         </tbody>
+
+        <div>
+            <a th:href="@{/formAltaModificacion}" target="_blank">Formulario de Alta del alumno</a>
+        </div>
 
     </table>
     
