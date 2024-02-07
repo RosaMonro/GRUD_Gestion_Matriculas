@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Matriculas alumnado</title>
+</head>
+<body>
+    <h1>Listado de alumnos matriculados</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Nombre: </th>
+                <th>Apellidos: </th>
+                <th>Foto</th>
+                <th>Género: </th>
+
+                <!-- <th>Teléfono de contacto: </th>
+                <th>Dirección de correo: </th> -->
+                <th>Fecha de Matriculación: </th>
+                <th>Curso: </th>
+                <th>Total de asignaturas: </th>
+            </tr>
+        </thead>
+
+        <tbody>
+            <tr th:each=" alumno : ${alumnos}">
+                <td th:text="${alumno.nombre}"></td>
+                <td th:text="${alumno.apellidos}"></td>
+                <td th:text="${alumno.foto}"></td>
+                <td th:text="${alumno.genero}"></td>
+                <td th:text="${alumno.fechaMatricula}"></td>
+                <td th:text="${alumno.curso}"></td>
+                <td th:text="${alumno.totalAsignaturas}"></td>
+                <td>
+
+                     <!-- <a th:href="@{/detalles/} + ${empleado.id}"  target="_blank">Detalles</a> -->
+
+
+                </td>
+            </tr>
+        </tbody>
+
+    </table>
+    
+</body>
+</html>
