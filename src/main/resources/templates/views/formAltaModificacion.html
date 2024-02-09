@@ -9,6 +9,30 @@
 
     <h1>Formulario de Alta de alumnos y modificación de datos</h1>
 
+    <style>
+        input {
+            margin: 5px;
+            padding: 10px; 
+            border: 2px solid #256686; 
+            text-align: left;
+        }
+
+        form, fieldset {
+            margin: 5px;
+            padding: 10px; 
+            border: 3px solid #2f2052; 
+            text-align: left;
+        }
+
+        .btn {
+            border: 3px solid #2f2052; 
+            background-color: #256686;
+            color: whitesmoke;
+            font-weight: bolder;
+            border-radius: 8px;
+        }
+    </style>
+
     <fieldset>
         <legend>Formulario</legend>
         <form th:object="${alumno}" th:action="@{/persistir}" method="post">
@@ -61,7 +85,7 @@
                     name="direccionesCorreo" 
                     th:value="${direccionesDeCorreo}"><br>
 
-            <input type="submit" value="Alta/Modificacion">
+            <input class="btn" type="submit" value="Alta/Modificacion">
 
     </fieldset>
     
