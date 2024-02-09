@@ -77,7 +77,7 @@ public class MatriculasApplication implements CommandLineRunner {
 			.fechaMatricula(LocalDate.of(2021, Month.OCTOBER, 11))
 			.totalAsignaturas(4)
 			.curso(cursoService.dameUnCurso(1))
-			.foto("foto1")
+			.foto("niña1.jpeg")
 			.build();
 
 
@@ -88,7 +88,7 @@ public class MatriculasApplication implements CommandLineRunner {
 			.fechaMatricula(LocalDate.of(2020, Month.SEPTEMBER, 1))
 			.totalAsignaturas(3)
 			.curso(cursoService.dameUnCurso(1))
-			.foto("foto2")
+			.foto("niña2.jpeg")
 			.build();
 
 		Alumno alumno3 = Alumno.builder()
@@ -98,7 +98,7 @@ public class MatriculasApplication implements CommandLineRunner {
 			.fechaMatricula(LocalDate.of(2009, Month.MARCH, 21))
 			.totalAsignaturas(5)
 			.curso(cursoService.dameUnCurso(2))
-			.foto("foto4")
+			.foto("niño1.jpeg")
 			.build();
 
 		Alumno alumno4 = Alumno.builder()
@@ -108,7 +108,7 @@ public class MatriculasApplication implements CommandLineRunner {
 			.fechaMatricula(LocalDate.of(2021, Month.NOVEMBER, 11))
 			.totalAsignaturas(4)
 			.curso(cursoService.dameUnCurso(2))
-			.foto("foto4")
+			.foto("niña3.jpeg")
 			.build();
 
 		Alumno alumno5 = Alumno.builder()
@@ -118,7 +118,7 @@ public class MatriculasApplication implements CommandLineRunner {
 			.fechaMatricula(LocalDate.of(2018, Month.DECEMBER, 28))
 			.totalAsignaturas(3)
 			.curso(cursoService.dameUnCurso(3))
-			.foto("foto5")
+			.foto("niño2.jpeg")
 			.build();
 
 		Alumno alumno6 = Alumno.builder()
@@ -128,7 +128,7 @@ public class MatriculasApplication implements CommandLineRunner {
 			.fechaMatricula(LocalDate.of(2020, Month.FEBRUARY, 12))
 			.totalAsignaturas(3)
 			.curso(cursoService.dameUnCurso(3))
-			.foto("foto7")
+			.foto("niño3.png")
 			.build();
 
 		Alumno alumno7 = Alumno.builder()
@@ -138,7 +138,7 @@ public class MatriculasApplication implements CommandLineRunner {
 			.fechaMatricula(LocalDate.of(2023, Month.MAY, 11))
 			.totalAsignaturas(2)
 			.curso(cursoService.dameUnCurso(4))
-			.foto("foto7")
+			.foto("niño4.png")
 			.build();
 
 		Alumno alumno8 = Alumno.builder()
@@ -148,7 +148,7 @@ public class MatriculasApplication implements CommandLineRunner {
 			.fechaMatricula(LocalDate.of(2021, Month.DECEMBER, 1))
 			.totalAsignaturas(4)
 			.curso(cursoService.dameUnCurso(4))
-			.foto("foto8")
+			.foto("niña4.jpeg")
 			.build();
 
 

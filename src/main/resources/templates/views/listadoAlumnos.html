@@ -8,12 +8,13 @@
 <body>
     <h1>Listado de alumnos matriculados</h1>
 
-    <table>
+
+    <table enctype="multipart/form-data">
         <thead>
             <tr>
+                <th>Foto</th>
                 <th>Nombre: </th>
                 <th>Apellidos: </th>
-                <th>Foto</th>
                 <th>Género: </th>
 
                 <!-- <th>Teléfono de contacto: </th>
@@ -26,16 +27,18 @@
 
         <tbody>
             <tr th:each=" alumno : ${alumnos}">
+                <td>
+                    <img th:src="@{/images/} + ${alumno.foto}" th:alt="'Imagen del alumno : ' + ${alumno.nombre}" width="50px" height="100%">
+                </td>
                 <td th:text="${alumno.nombre}"></td>
                 <td th:text="${alumno.apellidos}"></td>
-                <td th:text="${alumno.foto}"></td>
                 <td th:text="${alumno.genero}"></td>
                 <td th:text="${alumno.fechaMatricula}"></td>
                 <!-- <td th:text="${alumno.curso}"></td> -->
                 <td th:text="${alumno.totalAsignaturas}"></td>
                 <td>
 
-                    <a th:href="@{/detalles/} + ${alumno.id}" target="_blank">Detalles</a>
+                    <!-- <a th:href="@{/detalles/} + ${alumno.id}" target="_blank">Detalles</a> -->
                     <a th:href="@{/actualizar/} + ${alumno.id}" target="_blank">Actualizar</a>
                     <a th:href="@{/eliminar/} + ${alumno.id}">Eliminar</a>
 

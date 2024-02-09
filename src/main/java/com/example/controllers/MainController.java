@@ -1,5 +1,8 @@
 package com.example.controllers;
 
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -14,6 +17,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.example.entities.Alumno;
 import com.example.entities.Correo;
@@ -88,8 +92,37 @@ public class MainController {
     @Transactional
     public String persistirUnAlumno(@ModelAttribute(name = "alumno") Alumno alumno,
                 @RequestParam(name = "numerosTel", required = false) String telefonosRecibidos,
-                @RequestParam(name = "direccionesCorreo", required = false) String correosRecibidos) {  
-                    // para las imagenes
+                @RequestParam(name = "direccionesCorreo", required = false) String correosRecibidos,
+                @RequestParam(name = "file", required = false) MultipartFile imagen) {  // para las imagenes
+
+
+                // Comprobamos si hemos recibido un archivo (en este caso de img)
+            if(!imagen.isEmpty()) {
+
+                // Recuperar ruta (path) relativa de la carpeta donde se almacenará el archivo
+                Path imageFolder = Path.of("src/main/resources/static/images"); //del paquete java.nio.file
+
+                // También necesitamos la ruta absoluta
+                Path rutaAbsoluta = imageFolder.toAbsolutePath();
+
+                // La ruta completa = rutaAbsoluta + nombre del archivo recibido.
+                Path rutaCompleta = Path.of(rutaAbsoluta + "/" + imagen.getOriginalFilename());
+
+
+                try {
+
+                    byte[] baytesImage = imagen.getBytes();
+                    Files.write(rutaCompleta, baytesImage);
+
+                    // establecer la propiedad foto al nombre original del archivo recibido
+                    alumno.setFoto(imagen.getOriginalFilename());
+
+
+                } catch (IOException e) {
+                    // TODO: handle exception
+                }
+            }
+
 
 
 
