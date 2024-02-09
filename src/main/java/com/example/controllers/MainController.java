@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import com.example.entities.Alumno;
 import com.example.entities.Correo;
 import com.example.entities.Curso;
+import com.example.entities.Horario;
 import com.example.entities.Telefono;
 import com.example.services.AlumnoService;
 import com.example.services.CursoService;
@@ -180,5 +181,21 @@ public class MainController {
             return "views/formAltaModificacion";
         }
 
+
+
+ 
+// ALUMNOS TURNO DE MAÑANA
+ 
+        @GetMapping("/listadoAlumnosMañana")
+        public String alumnosTurnoMañana (Model model) { 
+            List<Alumno>todosLosAlumnos = alumnoService.dameTodosLosAlumnos();
+            List<Alumno>listaAlumnosMañana = todosLosAlumnos.stream()
+                                                            .filter(alumno -> alumno.getCurso().getHorario() == Horario.DIURNO)
+                                                            .collect(Collectors.toList());
+
+            model.addAttribute("listaAlumnosMañana", listaAlumnosMañana);
+
+            return "views/listadoAlumnosMañana";
+        }
 
 }
