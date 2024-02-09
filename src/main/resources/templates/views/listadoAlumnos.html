@@ -35,7 +35,10 @@
                 <td th:text="${alumno.totalAsignaturas}"></td>
                 <td>
 
-                    <!-- <a th:href="@{/actualizar/} + ${alumno.id}" target="_blank">Actualizar</a> -->
+                    <a th:href="@{/detalles/} + ${alumno.id}" target="_blank">Detalles</a>
+                    <a th:href="@{/actualizar/} + ${alumno.id}" target="_blank">Actualizar</a>
+                    <a th:href="@{/eliminar/} + ${alumno.id}">Eliminar</a>
+
 
                 </td>
             </tr>

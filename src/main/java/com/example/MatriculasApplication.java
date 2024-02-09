@@ -210,6 +210,8 @@ public class MatriculasApplication implements CommandLineRunner {
 			.alumno(alumnoService.dameUnAlumno(8))
 			.build();
 
+			TelefonoService.telefono1Alumno1
+
 
 	// CORREOS
 
