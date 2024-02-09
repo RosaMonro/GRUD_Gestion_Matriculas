@@ -27,8 +27,8 @@ public class MatriculasApplication implements CommandLineRunner {
 
 	private final AlumnoService alumnoService;
 	private final CursoService cursoService;
-	// private final TelefonoService telefonoService;
-	// private final CorreoService correoService;
+	private final TelefonoService telefonoService;
+	private final CorreoService correoService;
 
 	public static void main(String[] args) {
 		SpringApplication.run(MatriculasApplication.class, args);
@@ -210,7 +210,18 @@ public class MatriculasApplication implements CommandLineRunner {
 			.alumno(alumnoService.dameUnAlumno(8))
 			.build();
 
-			TelefonoService.telefono1Alumno1
+
+			telefonoService.persistirTelefono(1, telefono1Alumno1);
+			telefonoService.persistirTelefono(2, telefono1Alumno2);
+			telefonoService.persistirTelefono(3, telefono1Alumno3);
+			telefonoService.persistirTelefono(4, telefono1Alumno4);
+			telefonoService.persistirTelefono(5, telefono1Alumno5);
+			telefonoService.persistirTelefono(6, telefono1Alumno6);
+			telefonoService.persistirTelefono(7, telefono1Alumno7);
+			telefonoService.persistirTelefono(8, telefono1Alumno8);
+
+
+
 
 
 	// CORREOS
@@ -260,6 +271,15 @@ public class MatriculasApplication implements CommandLineRunner {
 			.alumno(alumnoService.dameUnAlumno(8))
 			.build();
 
+
+			correoService.persistirCorreo(1, correo1Alumno1);
+			correoService.persistirCorreo(2, correo1Alumno2);
+			correoService.persistirCorreo(3, correo1Alumno3);
+			correoService.persistirCorreo(4, correo1Alumno4);
+			correoService.persistirCorreo(5, correo1Alumno5);
+			correoService.persistirCorreo(6, correo1Alumno6);
+			correoService.persistirCorreo(7, correo1Alumno7);
+			correoService.persistirCorreo(8, correo1Alumno8);
 
 
 	}

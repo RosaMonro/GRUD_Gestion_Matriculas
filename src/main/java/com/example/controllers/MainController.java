@@ -1,5 +1,7 @@
 package com.example.controllers;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.logging.Logger;
 import java.util.stream.Collectors;
@@ -7,17 +9,18 @@ import java.util.stream.Collectors;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.example.entities.Alumno;
 import com.example.entities.Correo;
 import com.example.entities.Curso;
 import com.example.entities.Telefono;
 import com.example.services.AlumnoService;
-import com.example.services.CorreoService;
 import com.example.services.CursoService;
-import com.example.services.TelefonoService;
 
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
@@ -77,7 +80,67 @@ public class MainController {
 
 
 // MODIFICAR ALUMNO
-        
+
+    // Guardar los datos del alumno cuando se modifican o se crea
+
+    @PostMapping("/persistir")
+    @Transactional
+    public String persistirUnAlumno(@ModelAttribute(name = "alumno") Alumno alumno,
+                @RequestParam(name = "numerosTel", required = false) String telefonosRecibidos,
+                @RequestParam(name = "direccionesCorreo", required = false) String correosRecibidos) {  
+                    // para las imagenes
+
+
+
+            // Procesar los telefonos
+
+            if(telefonosRecibidos != null) {
+                String[] arrayTelefonos = telefonosRecibidos.split(";");
+                List<String> numerosTelefonos = Arrays.asList(arrayTelefonos);
+    
+                List<Telefono> telefonos = new ArrayList<>();
+    
+                numerosTelefonos.stream()
+                    .forEach(numeroTelefono -> {
+                        telefonos.add(Telefono.builder()
+                            .numero(numeroTelefono)
+                            .alumno(alumno)
+                            .build());
+                    });
+                
+                alumno.setTelefonos(telefonos);
+            }
+
+
+
+            // Procesar los correos
+
+            if(correosRecibidos != null) {
+                String[] arrayCorreos = correosRecibidos.split(";");
+                List<String> direccionesDeCorreo = Arrays.asList(arrayCorreos);
+    
+                List<Correo> correos = new ArrayList<>();
+    
+                direccionesDeCorreo.stream()
+                    .forEach(direccionDeCorreo -> {
+                        correos.add(Correo.builder()
+                            .correo(direccionDeCorreo)
+                            .alumno(alumno)
+                            .build());
+                    });
+    
+                alumno.setCorreos(correos);
+            }
+
+            alumnoService.persistirAlumno(alumno);
+
+            return "redirect:/all";
+
+    }
+    
+
+    
+    // Añadir datos del alumno en el formulario cuando hago click en enviar:
 
         @GetMapping("/actualizar/{id}")
         @Transactional

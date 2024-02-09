@@ -11,7 +11,7 @@
 
     <fieldset>
         <legend>Formulario</legend>
-        <form th:object="${alumno}" method="post">
+        <form th:object="${alumno}" th:action="@{/persistir}" method="post">
 
             <input type="hidden" th:field="*{id}">
 
