@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="CSS/styles.css">
     <title>Formulario</title>
 </head>
 <body>
@@ -31,25 +32,25 @@
             font-weight: bolder;
             border-radius: 8px;
         }
+
+        img{
+            margin: 5px;
+        }
     </style>
 
-    <fieldset>
+    <fieldset enctype="multipart/form-data">
         <legend>Formulario</legend>
+
         <form th:object="${alumno}" th:action="@{/persistir}" method="post">
 
-            <input type="hidden" th:field="*{id}">
+            <img th:src="@{/images/} + ${alumno.foto}" th:alt="'Imagen del alumno : ' + ${alumno.nombre}" width="80px" height="100%"><br>
+
 
             <label for="nombre">Nombre: </label>
             <input type="text" id="nombre" th:field="*{nombre}">
 
             <label for="apellidos">Apellidos: </label>
-            <input type="text" id="apellidos" th:field="*{apellidos}"><br>
-
-            <label for="fechaMatricula">Fecha de Matriculación: </label>
-            <input type="date" id="fechaMatricula" th:field="*{fechaMatricula}">
-
-            <label for="foto">Foto: </label>
-            <input type="text" id="foto" th:field="*{foto}">
+            <input type="text" id="apellidos" th:field="*{apellidos}">
 
             <fieldset>
                 <legend>Género: </legend>
@@ -64,6 +65,9 @@
                 <input type="radio" name="genero" id="otro" value="OTRO" th:field="*{genero}">
             </fieldset>
 
+            <label for="fechaMatricula">Fecha de Matriculación: </label>
+            <input type="date" id="fechaMatricula" th:field="*{fechaMatricula}">
+
             <label for="curso">Curso: </label>
             <select name="curso" id="curso">
                 <option></option>
@@ -71,8 +75,9 @@
                         th:value="${curso.id}"
                         th:text="${curso.descripcion}"
                         th:selected="${alumno.id != 0 and alumno.curso.id == curso.id}"></option>
-
             </select><br>
+
+
 
             <label for="telefonos">Telefono: </label>
             <input type="text" 

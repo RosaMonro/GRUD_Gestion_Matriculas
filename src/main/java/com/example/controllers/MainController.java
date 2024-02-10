@@ -6,6 +6,7 @@ import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Map;
 import java.util.logging.Logger;
 import java.util.stream.Collectors;
 
@@ -230,5 +231,21 @@ public class MainController {
 
             return "views/listadoAlumnosMañana";
         }
+
+// ALUMNOS SEGÚN CURSO
+
+        @GetMapping("/listadoAlumnosCurso")
+        public String alumnosPorCurso (Model model) {
+            List<Alumno>todosLosAlumnos = alumnoService.dameTodosLosAlumnos();
+            Map<Curso, List<Alumno>> listaAlumnosCurso = todosLosAlumnos.stream()
+                                    .collect(Collectors.groupingBy(Alumno::getCurso));
+
+            model.addAttribute("listaAlumnosCurso", listaAlumnosCurso);
+
+
+            return "views/listadoAlumnosCurso";
+        }
+
+
 
 }
