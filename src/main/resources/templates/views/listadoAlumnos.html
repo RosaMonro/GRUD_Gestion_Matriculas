@@ -4,19 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="CSS/styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,400;0,700;1,500&display=swap" rel="stylesheet">
     <title>Matriculas alumnado</title>
 </head>
 <body>
+
     <h1>Listado de alumnos matriculados</h1>
-
-    <style>
-        th, td {
-            padding: 10px; 
-            border: 1px solid #256686; 
-            text-align: left;
-        }
-    </style>
-
 
     <table enctype="multipart/form-data">
         <thead>
@@ -36,7 +31,7 @@
 
         <tbody>
             <tr th:each=" alumno : ${alumnos}">
-                <td>
+                <td class="fondofoto">
                     <img th:src="@{/images/} + ${alumno.foto}" th:alt="'Imagen del alumno : ' + ${alumno.nombre}" width="50px" height="100%">
                 </td>
                 <td th:text="${alumno.nombre}"></td>
@@ -56,11 +51,10 @@
             </tr>
         </tbody>
 
-        <div>
-            <a th:href="@{/formAltaModificacion}" target="_blank">Formulario de Alta del alumno</a><br>
-            <a th:href="@{/listadoAlumnosMañana}" target="_blank">Alumnos de la mañana</a><br>
-            <a th:href="@{/listadoAlumnosCurso}" target="_blank">Alumnos clasificados por curso</a>
-
+        <div class="btn-group">
+            <button><a th:href="@{/formAltaModificacion}" target="_blank">Formulario de Alta del alumno</a></button>
+            <button><a th:href="@{/listadoAlumnosMañana}" target="_blank">Alumnos de la mañana</a></button>
+            <button><a th:href="@{/listadoAlumnosCurso}" target="_blank">Alumnos clasificados por curso</a></button>
         </div>
 
     </table>

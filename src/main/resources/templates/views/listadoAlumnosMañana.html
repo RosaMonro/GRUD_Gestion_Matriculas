@@ -3,22 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <link rel="stylesheet" href="CSS/styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,400;0,700;1,500&display=swap" rel="stylesheet">
     <title>Turno de mañana</title>
 </head>
 <body>
 
     <h1>Listado de alumnos del turno de mañana</h1>
-
-    <style>
-        th, td {
-            padding: 10px; 
-            border: 1px solid #256686; 
-            text-align: left;
-        }
-    </style>
     
-    <table>
+    <table class="tabla-mañana">
         <thead>
             <tr>
                 <th>Foto</th>
@@ -30,7 +26,7 @@
 
         <tbody>
             <tr th:each=" alumno : ${listaAlumnosMañana}">
-                <td> 
+                <td class="fondofoto"> 
                     <img th:src="@{/images/} + ${alumno.foto}" th:alt="'Imagen del alumno : ' + ${alumno.nombre}" width="50px" height="100%">
                 </td>
                 <td th:text="${alumno.nombre}"></td>
