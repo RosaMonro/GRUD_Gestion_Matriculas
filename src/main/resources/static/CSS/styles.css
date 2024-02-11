@@ -59,7 +59,12 @@ a:hover::after {
 }
 
 
-button {
+.fondofoto {
+    background-color: white;
+}
+
+.btn, button {
+    padding: 0 15px 0 15px;
     font-size:12.5px;
     border-width:1px;
     height: 28px;
@@ -77,40 +82,33 @@ button {
     cursor: pointer;
 }
 
-button:hover {
+button:hover,
+.btn:hover {
     background: linear-gradient(#80b5ea, #bddbfa);
-}
-
-.fondofoto {
-    background-color: white;
-}
-
-input {
-    margin: 5px;
-    padding: 10px; 
-    border: 2px solid #256686; 
-    text-align: left;
-}
-
-form, fieldset {
-    margin: 5px;
-    padding: 10px; 
-    border: 3px solid #2f2052; 
-    text-align: left;
-}
-
-.btn {
-    border: 3px solid #2f2052; 
-    background-color: #256686;
-    color: whitesmoke;
-    font-weight: bolder;
-    border-radius: 8px;
 }
 
 .btn-group button {
     margin: 8px 4px;
 }
 
+
 img{
     margin: 5px;
+}
+
+/*FORMULARIO DE ALTA*/
+
+input {
+    margin: 10px 10px 20px 5px;
+}
+
+form, fieldset {
+    margin: 5px;
+    padding: 10px; 
+    border: 2px solid #28284f; 
+    text-align: left;
+}
+
+.out-fieldset {
+    margin-right: 100px;
 }
