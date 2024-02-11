@@ -232,6 +232,8 @@ public class MainController {
             return "views/listadoAlumnosMañana";
         }
 
+        
+
 // ALUMNOS SEGÚN CURSO
 
         @GetMapping("/listadoAlumnosCurso")
