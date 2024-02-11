@@ -19,6 +19,8 @@
 
         <form th:object="${alumno}" th:action="@{/persistir}" method="post" enctype="multipart/form-data">
 
+            <input type="hidden" th:field="*{id}">
+
             <img th:src="@{/images/} + ${alumno.foto}" th:alt="'Imagen del alumno : ' + ${alumno.nombre}" width="80px" height="100%"><br>
             <label for="foto">Foto</label>
             <input type="file"name="file" th:value="${foto}">
@@ -44,7 +46,10 @@
             </fieldset>
 
             <label for="fechaMatricula">Fecha de Matriculación: </label>
-            <input type="date" id="fechaMatricula" th:field="*{fechaMatricula}">
+            <input type="date" id="fechaMatricula" th:field="*{fechaMatricula}">   
+
+            <label for="totalAsignaturas">Total de asignaturas matriculadas: </label>
+            <input type="text" id="totalAsignaturas" th:field="*{totalAsignaturas}">
 
             <label for="curso">Curso: </label>
             <select name="curso" id="curso">
